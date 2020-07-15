@@ -15,73 +15,73 @@ public class MovieRunnerWithFilters {
     }
 
     public void printAverageRatings() {
-//        ThirdRatings secondRatings = new ThirdRatings("ratings_short.csv");
-        ThirdRatings secondRatings = new ThirdRatings();
-        ArrayList<Rating> ratings = secondRatings.getAverageRatings(35);
+
+        ThirdRatings thirdRatings = new ThirdRatings();
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatings(35);
         Collections.sort(ratings);
 
-        print(secondRatings, ratings);
+        print(thirdRatings, ratings);
     }
 
     public void printAverageRatingsByYearAfter () {
-//        ThirdRatings secondRatings = new ThirdRatings("ratings_short.csv");
-        ThirdRatings secondRatings = new ThirdRatings();
-        ArrayList<Rating> ratings = secondRatings.getAverageRatingsByFilter(20, new YearAfterFilter(2000));
+
+        ThirdRatings thirdRatings = new ThirdRatings();
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(20, new YearAfterFilter(2000));
         Collections.sort(ratings);
 
-        print(secondRatings, ratings);
+        print(thirdRatings, ratings);
     }
 
 
     public void printAverageRatingsByGenre() {
-//        ThirdRatings secondRatings = new ThirdRatings("ratings_short.csv");
-        ThirdRatings secondRatings = new ThirdRatings();
-        ArrayList<Rating> ratings = secondRatings.getAverageRatingsByFilter(20, new GenreFilter("Comedy"));
+
+        ThirdRatings thirdRatings = new ThirdRatings();
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(20, new GenreFilter("Comedy"));
         Collections.sort(ratings);
 
-        print(secondRatings, ratings);
+        print(thirdRatings, ratings);
     }
 
     public void printAverageRatingsByMinutes() {
-//        ThirdRatings secondRatings = new ThirdRatings("ratings_short.csv");
-        ThirdRatings secondRatings = new ThirdRatings();
-        ArrayList<Rating> ratings = secondRatings.getAverageRatingsByFilter(5, new MinutesFilter(105, 135));
+
+        ThirdRatings thirdRatings = new ThirdRatings();
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(5, new MinutesFilter(105, 135));
         Collections.sort(ratings);
 
-        print(secondRatings, ratings);
+        print(thirdRatings, ratings);
     }
 
     public void printAverageRatingsByDirectors() {
-//        ThirdRatings secondRatings = new ThirdRatings("ratings_short.csv");
-        ThirdRatings secondRatings = new ThirdRatings();
-        ArrayList<Rating> ratings = secondRatings.getAverageRatingsByFilter(4, new DirectorsFilter("Clint Eastwood,Joel Coen,Martin Scorsese,Roman Polanski,Nora Ephron,Ridley Scott,Sydney Pollack"));
+
+        ThirdRatings thirdRatings = new ThirdRatings();
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(4, new DirectorsFilter("Clint Eastwood,Joel Coen,Martin Scorsese,Roman Polanski,Nora Ephron,Ridley Scott,Sydney Pollack"));
         Collections.sort(ratings);
 
-        print(secondRatings, ratings);
+        print(thirdRatings, ratings);
     }
 
     public void printAverageRatingsByYearAfterAndGenre() {
-//        ThirdRatings secondRatings = new ThirdRatings("ratings_short.csv");
-        ThirdRatings secondRatings = new ThirdRatings();
+
+        ThirdRatings thirdRatings = new ThirdRatings();
         AllFilters allFilter = new AllFilters();
         allFilter.addFilter(new YearAfterFilter(1990));
         allFilter.addFilter(new GenreFilter("Drama"));
-        ArrayList<Rating> ratings = secondRatings.getAverageRatingsByFilter(8, allFilter);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(8, allFilter);
         Collections.sort(ratings);
 
-        print(secondRatings, ratings);
+        print(thirdRatings, ratings);
     }
 
     public void printAverageRatingsByDirectorsAndMinutes () {
-//        ThirdRatings secondRatings = new ThirdRatings("ratings_short.csv");
-        ThirdRatings secondRatings = new ThirdRatings();
+
+        ThirdRatings thirdRatings = new ThirdRatings();
         AllFilters allFilter = new AllFilters();
         allFilter.addFilter(new DirectorsFilter("Clint Eastwood,Joel Coen,Tim Burton,Ron Howard,Nora Ephron,Sydney Pollack"));
         allFilter.addFilter(new MinutesFilter(90,180));
-        ArrayList<Rating> ratings = secondRatings.getAverageRatingsByFilter(3, allFilter);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(3, allFilter);
         Collections.sort(ratings);
 
-        print(secondRatings, ratings);
+        print(thirdRatings, ratings);
     }
 
 
