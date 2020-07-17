@@ -125,9 +125,12 @@ public class FourthRatings {
     public ArrayList<Rating> getSimilarRatingsByFilter(String id, int numSimilarRaters, int minimalRaters,Filter filterCriteria){
         ArrayList<String> movies = MovieDatabase.filterBy(filterCriteria);
         ArrayList<Rating> similarRaters = getSimilarities(id);
+        for(int i=4;i<similarRaters.size();i++){
+            similarRaters.remove(i);
+        }
         ArrayList<Rater> raterList=new ArrayList<>();
         int i=0;
-        while (raterList.size()<numSimilarRaters){
+        while (raterList.size()<numSimilarRaters && raterList.size()<similarRaters.size()){
             raterList.add(RaterDatabase.getRater(similarRaters.get(i).getItem()));
             i++;
         }
