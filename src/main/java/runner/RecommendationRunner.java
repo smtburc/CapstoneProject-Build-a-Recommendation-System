@@ -97,8 +97,5 @@ public class RecommendationRunner implements Recommender {
         System.out.println("</style>");
     }
 
-    public static void main(String[] args) {
-        RecommendationRunner recommendationRunner=new RecommendationRunner();
-        recommendationRunner.printRecommendationsFor("63");
-    }
+
 }

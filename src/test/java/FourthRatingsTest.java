@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pojo.Rating;
 import ratings.FourthRatings;
+import runner.RecommendationRunner;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,8 +20,8 @@ public class FourthRatingsTest {
     FourthRatings fourthRatings;
 
     @Before
-    public void init(){
-        fourthRatings=new FourthRatings();
+    public void init() {
+        fourthRatings = new FourthRatings();
     }
 
     @Test
@@ -45,47 +46,47 @@ public class FourthRatingsTest {
     }
 
     @Test
-    public void printSimilarRatings(){
+    public void printSimilarRatings() {
 
-        ArrayList<Rating> ratings = fourthRatings.getSimilarRatings("71",20,5);
-
-        print(fourthRatings, ratings);
-    }
-
-    @Test
-    public void printSimilarRatingsByGenre (){
-
-        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("964",20,5,new GenreFilter("Mystery"));
+        ArrayList<Rating> ratings = fourthRatings.getSimilarRatings("71", 20, 5);
 
         print(fourthRatings, ratings);
     }
 
     @Test
-    public void printSimilarRatingsByDirector  (){
+    public void printSimilarRatingsByGenre() {
 
-        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("120",10,2,new DirectorsFilter("Clint Eastwood,J.J. Abrams,Alfred Hitchcock,Sydney Pollack,David Cronenberg,Oliver Stone,Mike Leigh"));
+        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("964", 20, 5, new GenreFilter("Mystery"));
 
         print(fourthRatings, ratings);
     }
 
     @Test
-    public void printSimilarRatingsByGenreAndMinutes   (){
+    public void printSimilarRatingsByDirector() {
+
+        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("120", 10, 2, new DirectorsFilter("Clint Eastwood,J.J. Abrams,Alfred Hitchcock,Sydney Pollack,David Cronenberg,Oliver Stone,Mike Leigh"));
+
+        print(fourthRatings, ratings);
+    }
+
+    @Test
+    public void printSimilarRatingsByGenreAndMinutes() {
 
         AllFilters allFilter = new AllFilters();
-        allFilter.addFilter(new MinutesFilter(80,160));
+        allFilter.addFilter(new MinutesFilter(80, 160));
         allFilter.addFilter(new GenreFilter("Drama"));
-        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("168",10,3,allFilter);
+        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("168", 10, 3, allFilter);
 
         print(fourthRatings, ratings);
     }
 
     @Test
-    public void printSimilarRatingsByYearAfterAndMinutes (){
+    public void printSimilarRatingsByYearAfterAndMinutes() {
 
         AllFilters allFilter = new AllFilters();
-        allFilter.addFilter(new MinutesFilter(70,200));
+        allFilter.addFilter(new MinutesFilter(70, 200));
         allFilter.addFilter(new YearAfterFilter(1975));
-        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("314",10,5,allFilter);
+        ArrayList<Rating> ratings = fourthRatings.getSimilarRatingsByFilter("314", 10, 5, allFilter);
 
         print(fourthRatings, ratings);
     }
@@ -100,5 +101,17 @@ public class FourthRatingsTest {
             System.out.println("   Time: " + MovieDatabase.getMinutes(r.getItem()));
             System.out.println("   Director: " + MovieDatabase.getDirector(r.getItem()));
         }
+    }
+
+    @Test
+    public void getItemsToRate() {
+        RecommendationRunner recommendationRunner = new RecommendationRunner();
+        System.out.println(recommendationRunner.getItemsToRate());
+    }
+
+    @Test
+    public void printRecommendationsFor() {
+        RecommendationRunner recommendationRunner = new RecommendationRunner();
+        recommendationRunner.printRecommendationsFor("63");
     }
 }
